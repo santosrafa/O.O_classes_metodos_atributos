@@ -17,7 +17,7 @@ class Conta
         if ($valorASacar > $this->saldo){
             echo "Saldo indisponivel";
         }else{
-            $this->saldo -+ $valorASacar;
+            $this->saldo -= $valorASacar;
         }
     }
 }
