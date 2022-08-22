@@ -11,4 +11,14 @@ class Conta
     public $cpfTitular;                 
     public $nomeTitular;
     public $saldo;
+
+    public function sacar (float $valorASacar)                  //Uma função que está dentro de uma classe é chamada de método
+    {
+        if ($valorASacar > $this->saldo){
+            echo "Saldo indisponivel";
+        }else{
+            $this->saldo -+ $valorASacar;
+        }
+    }
 }
+
