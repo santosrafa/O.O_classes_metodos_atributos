@@ -6,12 +6,20 @@
 //-> Esse simbolo significa que estou acessando um atributo
 //public :: Significa que este dado será publico
 //Classe é a forma do bolo e objeto é bolo feito.
+//É uma boa pratica colocar as propriedades sempre privadas e os metodos publicos
 
 class Conta                 
 {
-    public $cpfTitular;                 
-    public $nomeTitular;
-    public $saldo = 0;              
+    private $cpfTitular;                 
+    private $nomeTitular;
+    private $saldo;            
+
+    public function __construct(string $cpfTitular, string $nomeTitular)  //Utilizado para qualquer inicialização que o objeto necessite antes de ser utilizado.
+    {
+        $this->cpfTitular = $cpfTitular;
+        $this->nomeTitular = $nomeTitular;
+        $this->saldo = 0;
+    }
 
     public function sacar (float $valorASacar)                  //Uma função que está dentro de uma classe é chamada de método
     {
@@ -41,6 +49,21 @@ class Conta
         }
         $this->sacar($valorATransferir);
         $contaDestino->depositar($valorATransferir);
+    }
+
+    public function recuperarSaldo(): float                    //Criando metodos para acessar as propriedades.
+    {
+        return $this->saldo;
+    }
+
+    public function recuperarCpfTitular(): string
+    {
+        return $this->cpfTitular;
+    }
+
+    public function recuperarNomeTitular(): string
+    {
+        return $this->nomeTitular;
     }
 }
 
