@@ -26,6 +26,13 @@ class Conta
         self::$numeroDeContas++;
     }
 
+    public function __destruct()
+    {
+        if (self::$numeroDeContas > 2){
+            echo "Há mais de uma conta ativa!";
+        }
+    }
+
     public function sacar (float $valorASacar)                                //Uma função que está dentro de uma classe é chamada de método
     {
         if ($valorASacar > $this->saldo){
