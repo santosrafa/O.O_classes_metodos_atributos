@@ -11,16 +11,13 @@
 
 class Conta                 
 {
-    private $cpfTitular;                 
-    private $nomeTitular;
+    private $titular;                 
     private $saldo;            
     private static $numeroDeContas = 0;                                      //Membros estáticos. São membros da classe em si, e não de cada instância (objeto).
 
-    public function __construct(string $cpfTitular, string $nomeTitular)     //Utilizado para qualquer inicialização que o objeto necessite antes de ser utilizado.
+    public function __construct(Titular $titular)                           //Utilizado para qualquer inicialização que o objeto necessite antes de ser utilizado.
     {
-        $this->cpfTitular = $cpfTitular;
-        $this->validaNomeTitular($nomeTitular);
-        $this->nomeTitular = $nomeTitular;
+        $this->titular = $titular;
         $this->saldo = 0;
         
         self::$numeroDeContas++;
@@ -68,22 +65,14 @@ class Conta
         return $this->saldo;
     }
 
-    public function recuperarCpfTitular(): string
-    {
-        return $this->cpfTitular;
-    }
-
     public function recuperarNomeTitular(): string
     {
-        return $this->nomeTitular;
+        return  $this->titular->recuperaNome();
     }
 
-    private function validaNomeTitular(string $nomeTitular)                         //Metodo valida nome.
+    public function recuperarCpfTitular(): string
     {
-        if (strlen($nomeTitular) < 5){
-            echo "Nome precisa ter no minimo 5 caracteres";
-            exit();
-        }
+        return  $this->titular->recuperaCpf();
     }
 
     public static function recuperaNumeroDeContas(): int

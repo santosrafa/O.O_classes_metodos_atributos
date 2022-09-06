@@ -1,8 +1,9 @@
 <?php
 
 require_once 'conta.php';
+require_once 'Titular.php';
 
-$primeiraConta = new Conta('123.456.789-10', 'Rafael');
+$primeiraConta = new Conta(new Titular('123.456.789-10', 'Rafael'));
 $primeiraConta->depositar(500);
 $primeiraConta->sacar(300);
 
